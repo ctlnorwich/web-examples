@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="array-cycle.js" defer></script>
+    <title>Quotes</title>
+    <style>
+      body {
+        background: lightskyblue;
+      }
+      blockquote {
+        border-left: 0.25rem solid darkblue;
+        padding: 2rem;
+        display: flex;
+        margin: 2rem;
+      }
+      blockquote p {
+        font-size: 2rem;
+        line-height: 1em;
+        color: darkblue;
+        margin: 2rem 0 0 0;
+      }
+      cite {
+        color: darkslateblue;
+      }
+      span {
+        color: steelblue;
+        font-size: 5rem;
+        line-height: 1em;
+      }
+      button {
+        margin-left: 3rem;
+        border: solid 2px darkblue;
+        background: transparent;
+        color: darkblue;
+        padding: 0.5rem;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      button:hover {
+        color: darkslateblue;
+        border: solid 2px darkslateblue;
+      }
+    </style>
+
+    <blockquote>
+      <span>&ldquo;</span>
+      <div>
+        <p>Quote Here</p>
+        <cite>Cite Here</cite>
+      </div>
+    </blockquote>
+
+    <button id="cycle-button">Cycle the quotes!</button>
+  </head>
+  <body></body>
+</html>
