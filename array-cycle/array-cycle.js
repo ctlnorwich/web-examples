@@ -1,4 +1,4 @@
-//Put function in a constant to scope variables, etc.
+// Put main function in a constant to scope variables, etc.
 const arrayCarousel = () => {
   const button = document.querySelector("#cycle-button");
   const quote = document.querySelector("blockquote p");
