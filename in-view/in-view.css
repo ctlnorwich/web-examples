@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+section {
+  background: lightblue;
+  display: flex;
+  height: 75vh;
+  align-items: center;
+  justify-content: center;
+  transition-delay: 1s;
+  transition: all 1s ease-in-out;
+}
+
+section h2 {
+    color: rgba(000,000,000,0.5);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;;
+}
+
+.fade-up {
+  transform: translate(0, 20vh);
+  opacity: 0;
+  background: lightblue;
+}
+
+.fade-left {
+  transform: translate(-20vh, 0);
+  opacity: 0;
+  background: lightcoral;
+}
+
+.fade-right {
+  transform: translate(20vh, 0);
+  opacity: 0;
+  background: lightgreen;
+}
+
+.in-view {
+  transform: translate(0, 0);
+  opacity: 1;
+}
