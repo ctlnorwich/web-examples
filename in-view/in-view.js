@@ -1,26 +1,25 @@
 const inView = () => {
-
   const sections = document.querySelectorAll("section");
 
-  if(!sections){
+  if (!sections) {
     return;
   }
 
   const options = {
-    threshold: 0.75
+    threshold: 0.75,
   };
 
-const observer = new IntersectionObserver((entries) => {
-  for (const entry of entries) {
-    if (entry.isIntersecting) {
-    entry.target.classList.add("in-view");
-    }
-  }
-}, options);
+  const sectionObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, options);
 
-  sections.forEach((section) => {
-    console.log(section)
-    observer.observe(section)
+  sections.forEach(section => {
+    sectionObserver.observe(section);
   });
 };
 
