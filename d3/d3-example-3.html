@@ -18,25 +18,25 @@
     </style>
   </head>
   <body>
-    <div></div>
+    <!-- <div></div> -->
     <svg></svg>
 
     <script>
-      // const DUMMY_DATA = [
-      //   { id: "d1", value: 10, name: "Item 1" },
-      //   { id: "d2", value: 12, name: "Item 2" },
-      //   { id: "d3", value: 15, name: "Item 3" },
-      //   { id: "d4", value: 20, name: "Item 4" },
-      // ];
+      const DUMMY_DATA = [
+        { id: "d1", value: 10, name: "Item 1" },
+        { id: "d2", value: 12, name: "Item 2" },
+        { id: "d3", value: 15, name: "Item 3" },
+        { id: "d4", value: 20, name: "Item 4" },
+      ];
 
-      d3.select('div')
-        .selectAll('p')
-        .data(['Item 1', 'Item 2', 'Item 3'])
-        .enter()
-        .append('p')
-        .text((d) => d);
+      // d3.select('div')
+      //   .selectAll('p')
+      //   .data(DUMMY_DATA)
+      //   .enter()
+      //   .append('p')
+      //   .text((d) => d.name);
 
-      /*
+    
       const height = 400;
       const width = 500;
 
@@ -61,7 +61,7 @@
         .attr("height", (d) => yScale(d.value))
         .attr("fill", "purple")
         .attr("x", (d) => xScale(d.name))
-        .attr("y", (d) => height - yScale(d.value));
+        .attr("y", (d) =>  height - yScale(d.value));
 
       for (const index of DUMMY_DATA.keys()) {
         console.log(index);
@@ -71,7 +71,7 @@
           },
           (index + 1) * 1000,
         );
-      } */
+      } 
     </script>
   </body>
 </html>
