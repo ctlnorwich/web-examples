@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v6.js"></script>
+
+    <style>
+      .container {
+        width: 500px;
+        height: 400px;
+        border: solid 2px purple;
+      }
+      .bar {
+        transition: all 0.3s ease-in-out;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <svg></svg>
+
+    <script>
+      // const DUMMY_DATA = [
+      //   { id: "d1", value: 10, name: "Item 1" },
+      //   { id: "d2", value: 12, name: "Item 2" },
+      //   { id: "d3", value: 15, name: "Item 3" },
+      //   { id: "d4", value: 20, name: "Item 4" },
+      // ];
+
+      d3.select('div')
+        .selectAll('p')
+        .data(['Item 1', 'Item 2', 'Item 3'])
+        .enter()
+        .append('p')
+        .text((d) => d);
+
+      /*
+      const height = 400;
+      const width = 500;
+
+      const xScale = d3.scaleBand()
+        .domain(DUMMY_DATA.map((d) => d.name))
+        .rangeRound([0, width])
+        .padding(0.1);
+
+      const yScale = d3.scaleLinear()
+        .domain([25, 0])
+        .range([height, 0]);
+
+      const container = d3.select("svg").classed("container", true);
+
+      const bars = container
+        .selectAll(".bar")
+        .data(DUMMY_DATA)
+        .enter()
+        .append("rect")
+        .classed("bar", true)
+        .attr("width", xScale.bandwidth())
+        .attr("height", (d) => yScale(d.value))
+        .attr("fill", "purple")
+        .attr("x", (d) => xScale(d.name))
+        .attr("y", (d) => height - yScale(d.value));
+
+      for (const index of DUMMY_DATA.keys()) {
+        console.log(index);
+        setTimeout(
+          () => {
+            bars.data(DUMMY_DATA.slice(0, index + 1)).attr("fill", "pink");
+          },
+          (index + 1) * 1000,
+        );
+      } */
+    </script>
+  </body>
+</html>

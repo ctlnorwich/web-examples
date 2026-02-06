@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: lightgoldenrodyellow;
+            margin: 0;
+            overflow: hidden;
+        }
+        .tick text {
+            font-size: 0.8rem;
+        }
+    </style>
+    
+    <script src="https://d3js.org/d3.v6.js"></script>
+</head>
+<body>
+    <script>
+        const { csv, select, scaleLinear, extent, axisLeft, axisBottom } = d3;
+
+        // Tweakables
+        const csvUrl = "test-1.csv";
+
+        const parseRow = (d) => {
+            d.value1 = +d.value1;
+            d.value2 = +d.value2;
+            return d;
+        }
+
+        const xValue = (d) => d.value1;
+        const yValue = (d) => d.value2;
+
+        const margin = {top: 20, right: 20, bottom: 50, left: 60}
+        const radius = 5;
+        const fill = "blue";
+
+        const width = 640 // window.innerWidth;
+        const height = 480 //window.innerHeight;
+
+        const svg = select('body')
+            .append('svg')
+            .attr('width', width)
+            .attr('height', height);
+
+        // Generic
+        const main = async () => {
+            const data = await csv(csvUrl, parseRow);
+
+            const x = scaleLinear()
+                .domain([0, d3.max(data, xValue)])
+                .range([margin.left, width - margin.right])
+
+            const y = scaleLinear()
+                .domain([0, d3.max(data, yValue)])
+                .range([height - margin.bottom, margin.top])
+
+
+            // const marks = data.map((d) => {
+            //     return {
+            //         x: x(xValue(d)),
+            //         y: y(yValue(d))
+            //     }
+            // })
+
+            // Implicit return using parentheses
+            const marks = data.map(d => ({
+                x: x(xValue(d)),
+                y: y(yValue(d))
+            }))
+
+            svg.selectAll('circle')
+            .data(marks)
+            .join('circle')
+            .attr('cx', d => d.x)
+            .attr('cy', d => d.y)
+            .attr('r', radius)
+            .attr('fill', fill)
+
+            // const yAxis = axisLeft(y);
+            // const yAxisG = svg
+            //     .append('g')
+            //     .attr('transform', `translate(${margin.left},0)`);
+            // yAxis(yAxisG)
+
+            // axisLeft(y)(
+            //     svg.append('g').attr('transform', `translate(${margin.left}, 0)`)
+            // )
+
+            svg.append('g').attr('transform', `translate(${margin.left}, 0)`).call(axisLeft(y));
+            svg.append('g').attr('transform', `translate(0, ${height - margin.bottom})`).call(axisBottom(x));
+            
+            console.log(marks);
+        }
+
+        main();
+    
+
+    </script>
+</body>
+</html>
